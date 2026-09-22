@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Payment Request Checker</title><link rel="stylesheet" href="/styles.css"><script src="/app.js" defer></script></head>
+<body>
+<header><a class="wordmark" href="/">PRC<span>Payment Request Checker</span></a><span class="environment">Local workspace <span aria-hidden="true">●</span></span></header>
+<main>
+  <section class="intro"><p class="eyebrow">PAYMENT REVIEW</p><h1>A closer look before the next payment.</h1><p>Compare an incoming request with the company’s trusted vendor record.</p></section>
+  <section class="workspace" aria-label="Payment request workspace">
+    <div class="request">
+      <div class="section-heading"><span class="step">01</span><h2>Incoming payment request</h2></div><ul class="step-note"><li>The email and invoice PDF arrive here, and the PDF is read on this computer.</li></ul>
+      <div class="field"><label for="sample">Choose a scenario</label><select id="sample"><option value="" selected disabled>Choose a scenario</option><optgroup id="standard-options" label="Core demonstrations"></optgroup><optgroup id="challenge-options" label="Hard-to-spot challenges"></optgroup></select><p id="sample-description" class="hint">All examples use invented businesses and payment details.</p></div>
+      <div class="field"><label for="email">Payment email</label><textarea id="email" rows="11" placeholder="Choose a scenario above to load its payment email."></textarea></div>
+      <div class="field"><span class="field-label">Invoice document</span><div id="invoice-card" class="invoice-card waiting"><div class="invoice-icon" aria-hidden="true">PDF</div><div class="invoice-copy"><div class="invoice-title"><strong id="invoice-name">No sample PDF selected</strong><span id="invoice-status" class="document-status">Choose a scenario</span></div><p id="invoice-description">The matching fictional invoice will be read locally on this computer.</p></div><button type="button" id="load-sample-pdf" disabled>Load PDF</button></div><p id="file-feedback" class="hint" role="status"></p></div>
+      <div id="pdf-output" class="pdf-output" hidden><h3>Extracted invoice text</h3><p class="hint">Text extraction only, not payment analysis. Compare this text with the original PDF for missing or reordered details.</p><p id="pdf-warning" role="status"></p><div id="pdf-pages"></div></div>
+      <div class="action-row"><button type="button" id="analyze" disabled>Analyze request</button><button type="button" id="reset" class="secondary">Clear request</button></div><p id="analyze-help" class="hint" role="status">Choose a scenario to begin.</p>
+    </div>
+    <aside class="record">
+      <div class="section-heading"><span class="step">02</span><h2>Trusted vendor record</h2></div><ul class="step-note"><li>The company’s saved details for the vendor, used as the comparison.</li></ul>
+      <label for="vendor">Trusted record</label><select id="vendor"><option value="">Select a vendor</option><option value="new">New Vendor</option></select>
+      <div id="vendor-record"><p class="empty">Choose a scenario to see the fictional reference record.</p></div>
+      <div class="review-note"><h3>Every detail has a source</h3><p>The analysis shows where each value came from and keeps exact comparison findings separate from the explanation.</p></div>
+      <p class="fixture-label">DEMONSTRATION DATA ONLY</p>
+    </aside>
+  </section>
+  <section id="results" class="results" aria-label="Review results" aria-busy="false">
+    <div class="section-heading"><span class="step">03</span><h2>Review the evidence</h2><span id="result-badge" class="preview-badge">LOCAL REVIEW</span></div><ul class="step-note"><li>Code compares each field exactly and marks mismatches. The model only explains the result.</li></ul>
+    <p id="result-message" role="status">Choose a scenario, then select Analyze request.</p>
+    <div id="result-content" hidden>
+      <div id="status-banner" tabindex="-1"><div class="result-meta"><p id="result-eyebrow" class="eyebrow">LIVE LOCAL REVIEW</p><span id="fraud-risk-level" class="risk-level-badge"></span></div><h3 id="status-title"></h3><p id="status-description"></p><p class="risk-disclaimer">Based on detected warning signs. This is not a calculated probability or a fraud determination.</p><p id="mode-note" class="mode-note"></p><p class="approval-note">Normal company verification and approval remain required.</p></div>
+      <details class="evidence-table" open><summary>Request evidence beside the reference record</summary><div class="table-wrap"><table><caption>Request evidence beside the reference record</caption><thead><tr><th scope="col">Field</th><th scope="col">Request evidence</th><th scope="col">Reference</th><th scope="col">Review</th><th scope="col">Source</th></tr></thead><tbody id="comparison"></tbody></table></div></details>
+      <div class="checks-heading"><h3>Verification checklist</h3><div class="demo-actions"><button type="button" id="fill-sample" class="secondary">Load sample checklist</button><span id="progress" role="status"></span></div></div>
+      <p class="hint">Classroom sample only. The checklist can show fictional verification responses, but it does not approve a payment or establish trust.</p>
+      <div id="checklist"></div>
+      <div class="outcome"><label for="outcome">Review outcome</label><select id="outcome"><option value="">Choose an outcome</option><option value="ready">Ready for normal approval</option><option value="hold">Hold and escalate</option></select><p id="outcome-hint" class="hint" role="status"></p></div>
+      <p class="hint">Checklist responses stay only on this page. Changing the request, clearing it, or reloading resets this classroom review.</p>
+    </div>
+  </section>
+  <p id="app-status" role="status">Connecting to the local server…</p>
+</main><footer>Gen AI and Business<span>Human verification and normal approval remain required.</span></footer>
+</body></html>

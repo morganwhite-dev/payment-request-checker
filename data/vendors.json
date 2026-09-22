@@ -1,0 +1,5 @@
+[
+  {"id":"northstar","name":"Northstar Office Supply","email":"billing@northstar.example","phone":"202-555-0101","account":"DEMO-1042","terms":"Net 30","currency":"USD"},
+  {"id":"cedar","name":"Cedar Facilities Services","email":"accounts@cedar.example","phone":"202-555-0102","account":"DEMO-2088","terms":"Net 30","currency":"USD"},
+  {"id":"harbor","name":"Harbor Print Studio","email":"invoices@harbor.example","phone":"202-555-0103","account":"DEMO-3316","terms":"Net 15","currency":"USD"}
+]

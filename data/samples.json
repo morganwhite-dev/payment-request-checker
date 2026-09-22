@@ -1,0 +1,53 @@
+[
+ {
+  "id": "routine-reorder",
+  "name": "Routine invoice",
+  "vendor_id": "harbor",
+  "description": "A regular vendor sends its usual invoice from its usual address with the usual bank account.",
+  "email": "From: invoices@harbor.example\nTo: ap@oakandfield.example\nSubject: Invoice HP-2207 for PO-7101 (September brochure reprint)\n\nHi Jordan,\n\nAttached is invoice HP-2207 for $1,286.50 covering the September brochure reprint, purchase order PO-7101. Payment terms are Net 15, so it is due October 12, 2026. Remittance is unchanged: account DEMO-3316.\n\nThanks again for the repeat order. Give us a call if anything looks off.\n\nBest,\nRenee Castillo\nHarbor Print Studio",
+  "invoice": "FICTIONAL DEMO INVOICE\nHarbor Print Studio\nInvoice: HP-2207\nInvoice date: September 26, 2026\nPurchase order: PO-7101\nCustomer: Oak and Field\nBrochure reprint, September: $1,286.50\nTotal: USD 1,286.50\nDue: October 12, 2026\nAccount: DEMO-3316\nEmail: invoices@harbor.example"
+ },
+ {
+  "id": "first-invoice-contractor",
+  "name": "First invoice from a new contractor",
+  "vendor_id": "new",
+  "description": "A vendor nobody has paid before sends a friendly first invoice. Nothing is wrong yet, but there is no history to compare against.",
+  "email": "From: billing@bluebirdrentals.example\nTo: ap@oakandfield.example\nSubject: Invoice BR-1001 for PO-7118, thank you for booking us\n\nHi Jordan,\n\nThank you for booking Bluebird Event Rentals for the October open house. Invoice BR-1001 totals $2,340.00 against purchase order PO-7118. Since this is our first job together, our payment details are below.\n\nRemit to account DEMO-8812. Payment is due October 30, 2026.\n\nWe are looking forward to the event.\n\nMarcus Bell\nBluebird Event Rentals",
+  "invoice": "FICTIONAL DEMO INVOICE\nBluebird Event Rentals\nInvoice: BR-1001\nInvoice date: September 30, 2026\nPurchase order: PO-7118\nCustomer: Oak and Field\nOpen house rentals: $2,340.00\nTotal: USD 2,340.00\nDue: October 30, 2026\nAccount: DEMO-8812\nEmail: billing@bluebirdrentals.example"
+ },
+ {
+  "id": "bank-change-notice",
+  "name": "Vendor announces new bank details",
+  "vendor_id": "cedar",
+  "description": "A polite reply on a real thread, from the vendor's exact address, says its bank has changed. Nothing is rushed, so only the account gives it away.",
+  "email": "From: accounts@cedar.example\nTo: ap@oakandfield.example\nSubject: RE: September service visit, invoice CF-3310 for PO-7052\n\nHello,\n\nThanks for confirming the September service visit. Invoice CF-3310 for $4,215.00 is attached under purchase order PO-7052.\n\nOur company recently moved its banking to a new institution as part of a routine treasury update. Going forward, please remit to account DEMO-5531. The attached invoice already shows the new details. Payment is due October 21, 2026 under our Net 30 terms.\n\nLet me know if you have any questions.\n\nThank you,\nDana Ortiz\nAccounts Receivable, Cedar Facilities Services",
+  "invoice": "FICTIONAL DEMO INVOICE\nCedar Facilities Services\nInvoice: CF-3310\nInvoice date: September 30, 2026\nPurchase order: PO-7052\nCustomer: Oak and Field\nFacilities service, September: $4,215.00\nTotal: USD 4,215.00\nDue: October 21, 2026\nAccount: DEMO-5531\nEmail: accounts@cedar.example"
+ },
+ {
+  "id": "pdf-only-bank-change",
+  "name": "Bank details changed only inside the PDF",
+  "vendor_id": "northstar",
+  "difficulty": "challenge",
+  "description": "The email is from the vendor's real address and never mentions banking. Only the attached invoice shows a different account.",
+  "email": "From: Luis Ferreira <billing@northstar.example>\nTo: ap@oakandfield.example\nSubject: RE: October supply order, invoice NS-10611 for PO-7140\n\nHi Jordan,\n\nThanks for the quick turnaround on the quote. Invoice NS-10611 for $3,975.40 is attached under PO-7140 and is due November 3, 2026 on Net 30 terms. Let me know if you need anything else.\n\nThanks,\nLuis Ferreira\nNorthstar Office Supply",
+  "invoice": "FICTIONAL DEMO INVOICE\nNorthstar Office Supply\nInvoice: NS-10611\nInvoice date: October 2, 2026\nPurchase order: PO-7140\nCustomer: Oak and Field\nToner and paper, October: $3,975.40\nTotal: USD 3,975.40\nDue: November 3, 2026\nAccount: DEMO-6620\nEmail: billing@northstar.example"
+ },
+ {
+  "id": "display-name-spoof",
+  "name": "Vendor contact writing from a personal address",
+  "vendor_id": "northstar",
+  "difficulty": "challenge",
+  "description": "The display name shows the real contact and company, and the excuse sounds ordinary, but the address is a free mailbox and the account is new.",
+  "email": "From: \"Luis Ferreira, Northstar Office Supply\" <luis.ferreira@outlook-mail.example>\nTo: ap@oakandfield.example\nSubject: Invoice NS-10648 for PO-7155 (October toner order)\n\nHi Jordan,\n\nMy work email has been having trouble sending attachments this week, so I am writing from my personal address. Invoice NS-10648 for $2,905.00 is attached under PO-7155 and is due November 6, 2026 on Net 30 terms. Please remit to account DEMO-4418.\n\nThanks,\nLuis",
+  "invoice": "FICTIONAL DEMO INVOICE\nNorthstar Office Supply\nInvoice: NS-10648\nInvoice date: October 7, 2026\nPurchase order: PO-7155\nCustomer: Oak and Field\nToner, October: $2,905.00\nTotal: USD 2,905.00\nDue: November 6, 2026\nAccount: DEMO-4418\nEmail: luis.ferreira@outlook-mail.example"
+ },
+ {
+  "id": "reply-to-hijack",
+  "name": "Replies are quietly redirected",
+  "vendor_id": "cedar",
+  "description": "The visible sender is the trusted vendor, but replies go to a different address and the message failed authentication, a sign the From line was forged.",
+  "email": "From: Dana Ortiz <accounts@cedar.example>\nReply-To: Dana Ortiz <billing@cedar-facilities.example>\nAuthentication-Results: mx.oakandfield.example; spf=fail smtp.mailfrom=cedar.example; dkim=none; dmarc=fail header.from=cedar.example\nTo: ap@oakandfield.example\nSubject: Invoice CF-3388 for PO-7162 (October service visit)\n\nHello,\n\nPlease find invoice CF-3388 for $7,120.00 for the October service visit, purchase order PO-7162. Payment is due November 10, 2026 under our Net 30 terms. Remittance is unchanged: account DEMO-2088.\n\nIf you have questions about remittance, reply to this message and our billing desk will help.\n\nThank you,\nDana Ortiz\nAccounts Receivable, Cedar Facilities Services",
+  "invoice": "FICTIONAL DEMO INVOICE\nCedar Facilities Services\nInvoice: CF-3388\nInvoice date: October 10, 2026\nPurchase order: PO-7162\nCustomer: Oak and Field\nFacilities service, October: $7,120.00\nTotal: USD 7,120.00\nDue: November 10, 2026\nAccount: DEMO-2088\nEmail: accounts@cedar.example",
+  "difficulty": "challenge"
+ }
+]
