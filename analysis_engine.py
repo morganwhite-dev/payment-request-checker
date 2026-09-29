@@ -123,10 +123,10 @@ def local_model_explanation(facts):
             + json.dumps(facts, ensure_ascii=True)
         )
         payload = json.dumps({'model': model, 'prompt': prompt, 'stream': False,
-                              'options': {'temperature': 0}}).encode()
+                              'keep_alive': '30m', 'options': {'temperature': 0}}).encode()
         request = Request(f'{OLLAMA}/api/generate', data=payload,
                           headers={'Content-Type': 'application/json'})
-        with urlopen(request, timeout=25) as response:
+        with urlopen(request, timeout=45) as response:
             answer = json.load(response).get('response', '').strip()
         answer = re.sub(r'^Here (?:are|is)[^:]{0,100}:\s*', '', answer, flags=re.I)
         if answer:
@@ -275,10 +275,10 @@ def analyze(email_text, invoice_text, vendor_id):
             if check['title'] == 'Confirm purchase and follow approval':
                 check['sample'] = 'The purchase order and receipt were confirmed and the review was recorded for the normal approval process. This tool issued no payment.'
 
-    facts = {'title': title, 'fraud_risk_level': risk_level,
+    facts = {'title': title, 'verification_risk_level': risk_level,
              'findings': findings or ['No exact mismatch was found.'],
              'normal_approval_required': True}
     explanation, mode, mode_note = local_model_explanation(facts)
-    return {'tone': tone, 'title': title, 'fraud_risk_level': risk_level, 'description': explanation or summary,
+    return {'tone': tone, 'title': title, 'verification_risk_level': risk_level, 'description': explanation or summary,
             'rows': rows, 'checks': checks, 'findings': findings,
             'explanation_mode': mode, 'mode_note': mode_note}

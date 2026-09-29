@@ -18,7 +18,7 @@ Local URL:
 
 This is a local browser application for a Gen AI and Business class project. It compares an incoming payment email and invoice with a trusted vendor record. Exact rules calculate all findings. A local Ollama model may explain those findings, but it cannot add findings, determine fraud, approve a payment, or send a payment.
 
-The interface uses **Fraud risk level: Low, Medium, or High**. This level summarizes detected warning signs. It is not a calculated probability or a fraud determination. Keep that disclaimer visible if the result design changes.
+The interface uses **Verification risk level: Low, Medium, or High**. This level summarizes detected warning signs. It is not a calculated probability or a fraud determination. Keep that disclaimer visible if the result design changes.
 
 Risk mapping (full ordered rules are in README.md under How the risk level is decided; pressure and failed authentication also make a result High, and a new vendor with pressure is High):
 

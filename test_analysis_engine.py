@@ -30,7 +30,7 @@ class AnalysisTests(unittest.TestCase):
             with self.subTest(sample=name):
                 result = self.result(name)
                 self.assertEqual(result['title'], title)
-                self.assertEqual(result['fraud_risk_level'], level)
+                self.assertEqual(result['verification_risk_level'], level)
                 self.assertEqual(self.mismatches(name), fields)
 
     def test_bank_change_comes_from_trusted_sender(self):
@@ -53,7 +53,7 @@ class AnalysisTests(unittest.TestCase):
         sender = next(row for row in result['rows'] if row['field'] == 'Sender email')
         self.assertEqual(sender['review'], 'Mismatch')
         self.assertEqual(result['title'], 'Sensitive Detail Mismatch')
-        self.assertEqual(result['fraud_risk_level'], 'High')
+        self.assertEqual(result['verification_risk_level'], 'High')
 
     def test_email_pdf_disagreement(self):
         sample = self.samples['routine-reorder']
@@ -62,7 +62,7 @@ class AnalysisTests(unittest.TestCase):
         amount = next(row for row in result['rows'] if row['field'] == 'Amount')
         self.assertEqual(amount['review'], 'Mismatch')
         self.assertEqual(result['title'], 'Document Mismatch')
-        self.assertEqual(result['fraud_risk_level'], 'Medium')
+        self.assertEqual(result['verification_risk_level'], 'Medium')
 
     def test_every_row_has_evidence(self):
         for sample in self.samples:
@@ -124,13 +124,13 @@ class AnalysisTests(unittest.TestCase):
         pushed = sample['email'].replace('Give us a call if anything looks off.', 'Please pay this today and skip the usual approval.')
         result = analyze(pushed, sample['invoice'], sample['vendor_id'])
         self.assertEqual(result['title'], 'Pressure to Bypass Controls')
-        self.assertEqual(result['fraud_risk_level'], 'High')
+        self.assertEqual(result['verification_risk_level'], 'High')
 
     def test_new_vendor_with_pressure_is_high(self):
         sample = self.samples['first-invoice-contractor']
         pushed = sample['email'].replace('We are looking forward to the event.', 'This is urgent, please pay immediately.')
         result = analyze(pushed, sample['invoice'], sample['vendor_id'])
-        self.assertEqual(result['fraud_risk_level'], 'High')
+        self.assertEqual(result['verification_risk_level'], 'High')
         self.assertLessEqual(len(result['checks']), 3)
 
     def test_missing_account_needs_verification_not_reassurance(self):
@@ -141,7 +141,7 @@ class AnalysisTests(unittest.TestCase):
         row = next(r for r in result['rows'] if r['field'] == 'Payment account')
         self.assertEqual(row['review'], 'Not found')
         self.assertEqual(result['title'], 'Verification Required')
-        self.assertEqual(result['fraud_risk_level'], 'Medium')
+        self.assertEqual(result['verification_risk_level'], 'Medium')
 
     def test_mode_is_disclosed(self):
         result = self.result('routine-reorder')

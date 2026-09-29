@@ -53,9 +53,9 @@ function updateProgress(){const items=[...$('checklist').querySelectorAll('.chec
 function diffCell(segs,fallback){const cell=document.createDocumentFragment();if(!segs||!segs.length){cell.append(fallback);return cell;}const addText=(parent,text)=>{text.split(/(?<=@)/).forEach((part,i)=>{if(i){parent.append(document.createElement('wbr'));const keep=el('span',part,'keep-together');parent.append(keep);}else parent.append(document.createTextNode(part));});};segs.forEach(seg=>{if(seg.differs){const mark=document.createElement('mark');mark.className='diff';addText(mark,seg.text);cell.append(mark);}else addText(cell,seg.text);});return cell;}
 function evidenceRow(row,cols){const tr=document.createElement('tr');tr.className='evidence-row';tr.hidden=true;const td=document.createElement('td');td.colSpan=cols;const box=el('div','','evidence-box');box.append(el('h4',`Where "${row.field}" was found`));const list=document.createElement('dl');list.className='evidence-sources';(row.evidence?.sources||[]).forEach(src=>{const item=document.createElement('div');item.append(el('dt',src.label),el('dd',src.line));list.append(item);});box.append(list);box.append(el('p','Highlighted characters differ from the other value. The raw line is shown exactly as written in that source.','hint'));td.append(box);tr.append(td);return tr;}
 function renderResult(data){
-  window.lastLevel=data.fraud_risk_level;
+  window.lastLevel=data.verification_risk_level;
   $('status-banner').className=`status-banner ${data.tone}`;$('status-title').textContent=data.title;$('status-description').textContent=data.description;
-  $('fraud-risk-level').textContent=`Fraud risk level: ${data.fraud_risk_level}`;
+  $('verification-risk-level').textContent=`Verification risk level: ${data.verification_risk_level}`;
   $('result-eyebrow').textContent=data.explanation_mode==='local_model'?'LIVE LOCAL REVIEW · LLAMA EXPLANATION':'LIVE LOCAL REVIEW · RULE-BASED EXPLANATION';
   $('mode-note').textContent=data.mode_note;$('result-badge').textContent='LIVE LOCAL REVIEW';$('comparison').replaceChildren();
   document.querySelector('.evidence-table').open=true;
