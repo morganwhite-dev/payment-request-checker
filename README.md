@@ -12,6 +12,16 @@ Each request gets a risk level, Low, Medium, or High, based on what it finds, pl
 
 This was a project for my Gen AI for Business class at Georgia State. Business email compromise, where someone impersonates a vendor to redirect a payment, is a real and common fraud pattern. I wanted to build something that catches the kind of small, easy to miss detail that makes these scams work, like one changed digit in a bank account number, instead of something obvious like a phishing link.
 
+## Screenshots
+
+A sample scenario where the vendor announces new bank details:
+
+![Scenario loaded](screenshots/scenario-loaded.jpg)
+
+The tool flags the changed account number and shows where each value came from:
+
+![Risk review](screenshots/risk-review.jpg)
+
 ## How it works
 
 - `analysis_engine.py`: pulls the details out of each document and compares them
