@@ -34,7 +34,7 @@ All six sample scenarios are fictional and follow patterns described in FBI IC3 
 
 ## Running it
 
-Double click `Start.command`. It opens in your browser at http://127.0.0.1:8765. Python 3.10 or later is recommended. No paid API key is required.
+Install the one dependency with `pip install -r requirements.txt`, then double click `Start.command`. It opens in your browser at http://127.0.0.1:8765. Python 3.10 or later is recommended. No paid API key is required.
 
 Run the automated tests with:
 
